@@ -1,0 +1,6 @@
+//Al ejecutarlo saldrá un error
+1. ng serve -o
+//Para solucionarlo se debe ejecutar el comando 2:
+2. npm install @angular-devkit/build-angular --force
+//Solo queda volver a ejecutarlo
+3. ng serve -o
