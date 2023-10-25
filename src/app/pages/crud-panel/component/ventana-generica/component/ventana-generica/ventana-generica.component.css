@@ -1,0 +1,147 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaciado vertical entre elementos */
+    padding: 1rem; /* Espaciado interno de la tarjeta */
+    /* Fondo gris */
+    border-radius: 4px; /* Bordes redondeados de la tarjeta */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  }
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    margin:1rem auto;
+    max-width: 800px;
+}
+.custom-background{
+  display: flex;
+    flex-direction: column;
+    margin:1rem auto;
+    max-width: 1000px;
+
+}
+.form-element {
+    padding: 5px 0px 5px 40px;
+    width: 90%;
+  }
+ 
+  .transparent-multiselect .p-multiselect-label {
+    background-color: transparent;
+  }
+  :host ::ng-deep .p-dropdown {
+    width: 56rem;
+    height: 3rem;
+    border: 1px solid rgb(11, 11, 11);
+    background: transparent; 
+  }
+  :host ::ng-deep .p-multiselect {
+    width: 56rem;
+    height: 3rem;
+    border: 1px solid rgb(11, 11, 11);
+    background: transparent; 
+  }
+  
+  .error-message {
+    color: red; /* Cambia el color a rojo o al color deseado */
+  }
+  .custom-card {
+    border: 1px solid black; /* Cambia los valores según tus necesidades */
+    border-radius: 8px; /* Cambia los valores según tus necesidades */
+  }
+  .title-wrapper {
+    position: relative;
+  }
+  
+  .title-line {
+    position: absolute;
+    top: 20%;
+    left: -5px; /* Ajusta el valor según tu diseño */
+    width: 3px; /* Ajusta el valor según tu diseño */
+    height: 2px; /* Ajusta el valor según tu diseño */
+    background-color: black; /* Cambia el color según tus necesidades */
+  }
+  .table-container {
+    height: 400px;
+    width: 300px;
+  }
+  .my-custom-dialog {
+    width: 200px;
+    height: 200px /* Ancho máximo deseado para la ventana modal */
+  }
+  
+  .my-custom-dialog .modal-content {
+    width:200px; /* Ancho completo del contenido */
+    height: 200px; /* Altura deseada para la ventana modal */
+  }
+  
+  .valid-feedback::before {
+    content: "\2713"; /* Código Unicode del icono de chulo */
+    color: green;
+  }
+  
+  .invalid-feedback::before {
+    content: "\2717"; /* Código Unicode del icono de x */
+    color: red;
+  }
+  .modal-header {
+  
+   /* background-image: url('../../../../../../../assets/images/background/fondo-upc2-2017.png');*/
+    padding: 15px;
+  }
+  .modal-footer {
+  
+   /* background-image: url('../../../../../../../assets/images/background/fondo-menu.png');*/
+    border-bottom: none;
+  }
+  
+  .modal-title {
+    color: #333;
+    font-size: 20px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+}
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  button[type="submit"] {
+    margin-top: 20px;
+  }
+  
+  .toast-success {
+    background-color: rgb(130, 51, 15);
+    color: white;
+  }
+  .toast-custom {
+    color: #ff0000; /* Cambia #ff0000 al color deseado */
+  }
+  .input-container {
+    position: relative;
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .spinner-overlay {
+    position: absolute;
+    top: 10px; /* Ajusta la posición vertical */
+    right: 10px; /* Ajusta la posición horizontal */
+    z-index: 1; /* Asegura que el spinner esté en primer plano */
+  }
+  .modal-content {
+    max-height: 500px; /* Altura fija deseada */
+  }
+ /* 
+  .modal-body {
+    overflow-y: auto;
+  }
+  */
+ 

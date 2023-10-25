@@ -1,0 +1,149 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">{{ventana}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()" >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="custom-background">
+            <div class="input-container">
+                <!--   <div class="input-container">
+                        <mat-input placeholder="Nombre" [disabled]="isLoading"></mat-input>
+                        <div class="spinner-overlay" *ngIf="isLoading">
+                          <mat-spinner color="accent" diameter="20"></mat-spinner>
+                        </div>
+                    </div>-->
+                <ng-container *ngFor="let item of conf.form">
+                    <form #formulario="ngForm" [formGroup]="form">
+                        <div *ngIf="item.type === 'input'">
+
+                            <mat-form-field appearance="outline" class="form-element">
+                                <mat-label>{{ item.text }}</mat-label>
+                                <input matInput type="text" [formControlName]="item.field" [name]="item.field"
+                                    [ngClass]="valid ? 'valid-feedback' : 'invalid-feedback'">
+                                <span *ngIf="formControls[item.field].value.length>0 && !item.disabled" mat-button
+                                    mat-icon-button matSuffix (click)="clearItem(item.field)">
+                                    <mat-icon>close</mat-icon>
+                                </span>
+                                <mat-error *ngIf="form.get(item.field).hasError('required')">
+                                    <p-message severity="error" [text]="item.validar">
+                                    </p-message>
+                                </mat-error>
+                                <mat-error *ngIf="form.get(item.field).hasError('pattern')">
+                                    <p-message severity="error" [text]="item.validarPattern">
+                                    </p-message>
+                                  </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="item.type === 'date-range'">
+                            {{item.field.fecha1}}
+                            <mat-form-field class="col-md-8" appearance="outline" class="form-element">
+                                <mat-label>Ingrese el rango de la Fecha</mat-label>
+                                <mat-date-range-input [rangePicker]="picker">
+                                    <input matStartDate placeholder="Fecha Inicio" [formControlName]="item.field.fecha1"
+                                        [(ngModel)]="item.field.fecha1">
+                                    <mat-error>
+                                        {{ getFechaInicio(item.field.fecha1)}}
+
+                                    </mat-error>
+                                    <input matEndDate placeholder="Fecha Final" [formControlName]="item.field.fecha2"
+                                        [(ngModel)]="item.field.fecha2">
+                                    <mat-error>
+                                        {{ getFechaFin(item.field.fecha2)}}
+
+                                    </mat-error>
+                                </mat-date-range-input>
+                                <mat-hint>
+                                    MM/DD/YYYY – MM/DD/YYYY
+                                </mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                            </mat-form-field>
+
+                        </div>
+
+                        <div *ngIf="item.type === 'file-upload'">
+
+                            <div class="form-element">
+                                <app-gestorfile></app-gestorfile>
+
+                            </div>
+
+                        </div>
+                        <div *ngIf="item.type === 'select'">
+                            <div *ngFor="let seleccion of item.parametros; let i = index">
+                                <div style="margin-bottom: 30px;">
+
+                                    <div class="col-4" class="form-element">
+                                        <div style="margin-top: 15px;">
+                                            <span class="p-float-label">
+
+                                                <p-dropdown inputId="dropdown" [formControlName]="seleccion.field"
+                                                    [filter]="true" [style]="{'width':'100%'}"
+                                                    [autoDisplayFirst]="false" [options]="datos[seleccion.posi]"
+                                                    [(ngModel)]="seleccion.model"
+                                                    (onChange)="onSelectChange(seleccion.posi,seleccion.nivel)"
+                                                    [optionLabel]="seleccion.field"></p-dropdown>
+                                                <label for="dropdown">{{seleccion.text}}</label>
+                                            </span>
+                                            <div *ngIf="form.get(seleccion.field) && form.get(seleccion.field).invalid && form.get(seleccion.field).touched"
+                                                class="error-message">
+                                                <p-message severity="error" [text]="seleccion.validar"></p-message>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                    <!--   <p-multiSelect formControlName="opcion" [options]="options" class="transparent-multiselect"></p-multiSelect>
+                        <div class="red-text" *ngIf=*ngIf="form.get(seleccion.field).hasError('required')">{{seleccion.validar}}">
+                          Selección requerida
+                        </div>   -->
+                                  
+                                    <div *ngIf="item.type === 'multiSelect'">
+
+                                        <div *ngFor="let seleccion of item.parametros; let i = index">
+                                            <div style="margin-bottom: 30px;">
+
+                                                <div class="col-4" class="form-element" *ngIf="datos[seleccion.posi] && datos[seleccion.posi]">
+                                                    <span class="p-float-label">
+                                                    <p-multiSelect [options]="datos[seleccion.posi]"
+                                                        [(ngModel)]="seleccion.datos" [optionLabel]="seleccion.field"
+                                                        class="multiselect-custom" [formControlName]="seleccion.field"
+                                                        inputId="multiselect" [style]="{'width':'100%'}"
+                                                        scrollHeight="200px" display="chip">
+                                                        
+                                                    </p-multiSelect>
+                                                    <label for="multiselect">{{seleccion.text}}</label>
+                                                </span>
+                                           
+                                        </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </ng-container>
+                <ng-container *ngFor="let item of conf.form">
+
+                    <div *ngIf="item.type==='tablamov'">
+
+                        <app-generic-tabla></app-generic-tabla>
+                    </div>
+
+                </ng-container>
+               
+            </div>
+           
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" (click)="saveAndClose()">Guardar</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+        </div>
+    </div>

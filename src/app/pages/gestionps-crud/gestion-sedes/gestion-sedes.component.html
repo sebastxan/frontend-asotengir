@@ -1,0 +1,85 @@
+<a [ngClass]="(showSidebar)?'ti-close':'ti-menu'" class="btn btn-success show-left-part d-block d-md-none"
+	href="javascript:void(0)" (click)="mobileSidebar()"></a>
+
+<div class="main-part">
+	<div class="left-part bg-white fixed-left-part border-end" [ngClass]="{'show-panel': showSidebar}">
+		<div class="position-relative">
+			<div class="px-3 py-3 d-flex align-items-center border-bottom">
+				<p class="mb-0 py-1 text-center fs-5 fw-bold">Gestion Seccional</p>
+			</div>
+			<ul class="tasklist list-style-none">
+				<li class="task-item d-flex all border-bottom" [class.active]="seleccion === 0"
+					(click)="selectionlblClick('opcion1')">
+					Seccional </li>
+				<li class="task-item d-flex incomplete border-bottom" [class.active]="seleccion === 1"
+					(click)="selectionlblClick('opcion2')">
+					Sede</li>
+					<li class="task-item d-flex incomplete border-bottom" [class.active]="seleccion === 4"
+					(click)="selectionlblClick('opcion5')">
+					Crear Facultades</li>
+				<li class="task-item d-flex incomplete border-bottom" [class.active]="seleccion === 3"
+					(click)="selectionlblClick('opcion4')">
+					Asignar sede facultad</li>
+				<li class="task-item d-flex complete border-bottom" [class.active]="seleccion=== 2"
+					(click)="selectionlblClick('opcion3')">
+					Crear programas
+				</li>
+				<li class="task-item d-flex complete border-bottom" [class.active]="seleccion=== 5"
+					(click)="selectionlblClick('opcion6')">
+					Escalafon
+				</li>
+				<li class="task-item d-flex complete border-bottom" [class.active]="seleccion=== 10"
+					(click)="selectionlblClick('opcion11')">
+					Crear Usuarios
+				</li>
+				<li class="task-item d-flex complete border-bottom" [class.active]="seleccion=== 6"
+					(click)="selectionlblClick('opcion7')">
+					Asociar usuarios como investigador
+				</li>
+				<li class="task-item d-flex complete border-bottom" [class.active]="seleccion=== 7"
+					(click)="selectionlblClick('opcion8')">
+					Crear Roles
+				</li>
+				<li class="task-item d-flex complete border-bottom" [class.active]="seleccion=== 9"
+					(click)="selectionlblClick('opcion10')">
+					Asignar Roles
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div [ngSwitch]="seleccion">
+		<div *ngSwitchCase="0">
+
+			<app-tabla-generica [configuracion]="seccional"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="1">
+			<app-tabla-generica [configuracion]="sede"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="2">
+			<app-tabla-generica [configuracion]="facultadPrograma"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="3">
+			<app-tabla-generica [configuracion]="asignarSede"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="4">
+			<app-tabla-generica [configuracion]="facultad"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="5">
+			<app-tabla-generica [configuracion]="escalafon"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="6">
+			<app-tabla-generica [configuracion]="user"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="7">
+			<app-tabla-generica [configuracion]="role"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="9">
+			<app-tabla-generica [configuracion]="asignarRole"></app-tabla-generica>
+		</div>
+		<div *ngSwitchCase="10">
+			<app-tabla-generica [configuracion]="users"></app-tabla-generica>
+		</div>
+	</div>
+
+</div>

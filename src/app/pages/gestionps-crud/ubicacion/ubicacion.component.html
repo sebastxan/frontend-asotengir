@@ -1,0 +1,38 @@
+<a [ngClass]="(showSidebar)?'ti-close':'ti-menu'" class="btn btn-success show-left-part d-block d-md-none"
+	href="javascript:void(0)" (click)="mobileSidebar()"></a>
+
+<div class="main-part">
+    <div class="left-part bg-white fixed-left-part border-end" [ngClass]="{'show-panel': showSidebar}">
+		<div class="position-relative">
+			<div class="px-3 py-3 d-flex align-items-center border-bottom">
+				<p class="mb-0 py-1 text-center fs-5 fw-bold">Registro de Ubicación</p>
+			</div>
+			<ul class="tasklist list-style-none">
+				<li class="task-item d-flex all border-bottom" [class.active]="seleccion === 0"
+					(click)="selectionlblClick('opcion1')">
+					Registro País </li>
+				<li class="task-item d-flex incomplete border-bottom" [class.active]="seleccion === 1"
+					(click)="selectionlblClick('opcion2')">
+					Registro Departamento 
+				<li class="task-item d-flex complete border-bottom" [class.active]="seleccion=== 2"
+					(click)="selectionlblClick('opcion3')">
+					Registro  Ciudad 
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div [ngSwitch]="seleccion">
+        <div *ngSwitchCase="0">
+		
+			<app-tabla-generica [configuracion]="pais"></app-tabla-generica>
+        </div>
+        <div *ngSwitchCase="1">	
+            <app-tabla-generica [configuracion]="estado" ></app-tabla-generica>
+        </div>
+        <div *ngSwitchCase="2">
+			<app-tabla-generica [configuracion]="ciudad"></app-tabla-generica>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,56 @@
+.btn.btn-success.show-left-part {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para la parte izquierda (sidebar) */
+  .left-part {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Inicia oculto */
+    transition: 0.3s;
+  }
+  
+  .left-part.show-panel {
+    left: 0; /* Mostrar cuando se activa */
+  }
+  
+  /* Estilos para el título "Registro de Ubicación" */
+  .px-3.py-3 {
+    background-color: #f8f9fa;
+  }
+  
+  .px-3.py-3 p {
+    margin: 0;
+  }
+  
+  /* Estilos para la lista de tareas */
+  .tasklist {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .task-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .task-item.active {
+    background-color: #e2e3e5;
+  }
+  
+  /* Estilos para los diferentes estados de las tareas */
+  .all {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .incomplete {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .complete {
+    border-bottom: 1px solid #ccc;
+  }

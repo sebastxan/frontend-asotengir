@@ -1,0 +1,10 @@
+.custom-background {
+  /* background-image: url('../../..//assets/fondo-upc2-2017.png');*/
+    background-size: cover;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+  }
+  .panel-invisible {
+    display: none;
+  }
